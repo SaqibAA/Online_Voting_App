@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "245629728768",
+    "project_id": "online-voting-system-1d5c6",
+    "storage_bucket": "online-voting-system-1d5c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245629728768:android:5897f650b4edef69d540e5",
+        "android_client_info": {
+          "package_name": "com.saqibaa.onlinevotingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245629728768-9v1uq3hda0gs3fbc1vvnp0qvj36m4mca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiVj_S-fee_Wmx-k8N_3KdzONkiNXV0qk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245629728768-9v1uq3hda0gs3fbc1vvnp0qvj36m4mca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
