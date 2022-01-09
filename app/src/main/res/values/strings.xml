@@ -11,4 +11,9 @@
     <string name="enter_mobile_number">Enter Mobile Number</string>
     <string name="re_password">Re-Password</string>
     <string name="already_account_login">Already Account Login</string>
+    <string name="sign_out">SignOut</string>
+    <string name="share_app">Share App</string>
+    <string name="submit">Submit</string>
+    <string name="remember_password_login">Remember Password? Login</string>
+    <string name="enter_name">Enter Name</string>
 </resources>

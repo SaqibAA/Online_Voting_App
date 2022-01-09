@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVotingApp">
         <activity
+            android:name=".ForgetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
