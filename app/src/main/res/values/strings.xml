@@ -6,4 +6,9 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="forget_password">Forget Password?</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="re_password">Re-Password</string>
+    <string name="already_account_login">Already Account Login</string>
 </resources>
