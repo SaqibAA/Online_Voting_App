@@ -10,25 +10,23 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/logo"
         android:layout_gravity="center"
-        android:layout_height="150dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/logo"
         android:contentDescription="@string/todo"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="@string/enter_email"
         android:textColorHint="@color/text"
         app:hintTextColor="@color/text"
-        app:boxStrokeColor="@color/text"
-        app:boxStrokeWidth="3dp"
         app:endIconMode="clear_text"
         app:endIconTint="@color/text"
         app:startIconDrawable="@drawable/email"
@@ -49,13 +47,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textColorHint="@color/text"
-        app:boxStrokeColor="@color/text"
-        app:boxStrokeWidth="3dp"
         app:endIconMode="password_toggle"
         app:endIconTint="@color/text"
         app:hintTextColor="@color/text"
