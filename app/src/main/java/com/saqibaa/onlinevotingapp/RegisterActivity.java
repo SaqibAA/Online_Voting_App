@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etName, etEmail, Mobile, etPassword, et_re_password;
     Button register;
     TextView login;
+    String email, password, mobile, re_password, name;
 
     private FirebaseAuth mAuth;
 
@@ -46,7 +50,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String email, password, mobile, re_password, name;
                 email = etEmail.getText().toString();
                 password = etPassword.getText().toString();
                 re_password = et_re_password.getText().toString();
@@ -82,14 +85,13 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
-//                                    progressBar.setVisibility(View.GONE);
 
+                                        sendEmailVerification();
                                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                         startActivity(intent);
+
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();
-//                                    progressBar.setVisibility(View.GONE);
                                     }
                                 }
                             });
@@ -104,5 +106,34 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void sendEmailVerification() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser!=null){
+            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        sendUserData();
+                        Toast.makeText(RegisterActivity.this, "Successfully Registered, Verify E-mail", Toast.LENGTH_SHORT).show();
+                        mAuth.signOut();
+                        finish();
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Register Failed, Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void sendUserData()
+    {
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=firebaseDatabase.getReference(mAuth.getUid());
+        UserProfile userProfile=new UserProfile(name,email,mobile,password);
+        myRef.setValue(userProfile);
     }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
@@ -27,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView forget;
     Button login, register;
 
+    private ProgressDialog progressDialog;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -36,12 +40,21 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        progressDialog= new ProgressDialog(this);
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null) {
+            finish();
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        }
+
         logo = findViewById(R.id.logo);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         forget = findViewById(R.id.tvForget);
         login = findViewById(R.id.btnLogin);
         register = findViewById(R.id.btnRegister);
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,19 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                     etPassword.setError("Enter Password");
                     etPassword.requestFocus();
                 } else {
-                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-
-                            if(task.isSuccessful()){
-                                Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-                                startActivity(i);
-                            }else{
-                                Toast.makeText(getApplicationContext(),"Please Check Email or password",Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
+                    validate(email, password);
                 }
             }
         });
@@ -90,5 +91,42 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+
+    private void validate(String email, String password){
+        progressDialog.setMessage("Wait");
+        progressDialog.show();
+
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if(task.isSuccessful()){
+                    progressDialog.dismiss();
+                //Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    checkEmailVerification();
+                }else{
+                    Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+
+                    progressDialog.dismiss();
+                }
+
+            }
+        });
+    }
+
+    private void checkEmailVerification(){
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        boolean email_flag = firebaseUser.isEmailVerified();
+
+        if(email_flag){
+            finish();
+            Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(LoginActivity.this, "Verify Your E-Mail", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
+        }
     }
 }
