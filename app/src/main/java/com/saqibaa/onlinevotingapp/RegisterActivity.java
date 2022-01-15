@@ -87,8 +87,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
 
                                         sendEmailVerification();
-                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                        startActivity(intent);
 
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();
@@ -133,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
     {
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
         DatabaseReference myRef=firebaseDatabase.getReference(mAuth.getUid());
-        UserProfile userProfile=new UserProfile(name,email,mobile,password);
+        UserProfile userProfile=new UserProfile(name,email,mobile);
         myRef.setValue(userProfile);
     }
 }

@@ -1,5 +1,6 @@
 package com.saqibaa.onlinevotingapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ForgetPassword extends AppCompatActivity {
 
     ImageView logo;
@@ -18,10 +23,14 @@ public class ForgetPassword extends AppCompatActivity {
     Button submit;
     TextView tvLogin;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forget_password);
+
+        mAuth = FirebaseAuth.getInstance();
 
         logo = findViewById(R.id.logo);
         etEmail = findViewById(R.id.etEmail);
@@ -44,10 +53,23 @@ public class ForgetPassword extends AppCompatActivity {
                 email = etEmail.getText().toString();
 
                 if(email.isEmpty()){
-                    etEmail.setError("Enter Email");
+                    etEmail.setError("Please Enter Your Register Email ID");
                     etEmail.requestFocus();
-                }else{
-                    Toast.makeText(getApplicationContext(),"Service Under Processing",Toast.LENGTH_LONG).show();
+                }else {
+                    mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ForgetPassword.this, "Check Your Register Email E-mail and Change Password", Toast.LENGTH_SHORT).show();
+                                finish();
+                                Intent intent = new Intent(ForgetPassword.this, LoginActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(ForgetPassword.this, "Enter Valid E-mail", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
         });

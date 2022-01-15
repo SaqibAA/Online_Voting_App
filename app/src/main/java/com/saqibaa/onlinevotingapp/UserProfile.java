@@ -4,16 +4,14 @@ public class UserProfile {
     public String userName;
     public String userEmail;
     public String userMobile;
-    public String userPassword;
 
     public UserProfile() {
     }
 
-    public UserProfile(String userName, String userEmail, String userPhone, String userPassword) {
+    public UserProfile(String userName, String userEmail, String userPhone) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userMobile= userPhone;
-        this.userPassword = userPassword;
     }
 
     public String getUserName() {
@@ -40,11 +38,4 @@ public class UserProfile {
         this.userMobile = userMobile;
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
 }

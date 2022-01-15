@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
                     checkEmailVerification();
                 }else{
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-
                     progressDialog.dismiss();
                 }
 
