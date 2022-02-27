@@ -17,6 +17,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://dl.bintray.com/camerakit/camerakit-android'}
 //        jcenter() // Warning: this repository is going to shut down soon
     }
 }

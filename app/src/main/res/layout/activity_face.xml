@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".FaceActivity">-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FaceActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/camera"
+        app:backgroundTint="@color/background"
+        app:fabSize="normal"
+        app:maxImageSize="40dp"
+        android:contentDescription="@string/todo" />
+
+    <ImageButton
+        android:id="@+id/imgbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/btn"
+        android:src="@drawable/camera" />
+
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="output"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn">
+
+
+        <com.camerakit.CameraKitView
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:keepScreenOn="true"
+            app:camera_flash="auto"
+            app:camera_facing="back"
+            app:camera_focus="continuous"
+            app:camera_permissions="camera"
+            tools:ignore="MissingClass" />
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_horizontal"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame"
+        android:indeterminate="true"
+        android:indeterminateBehavior="repeat"
+        android:visibility="invisible" />
+
+    <com.example.machine_learning.GraphicOverlay
+        android:id="@+id/graphic_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingClass" />
+
+</RelativeLayout>

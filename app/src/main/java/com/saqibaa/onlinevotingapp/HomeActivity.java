@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(i);
+                finish();
                 return true;
             case R.id.share:
                 shareApp();
