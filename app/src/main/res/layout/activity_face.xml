@@ -35,7 +35,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@id/btn"
+        android:layout_toRightOf="@+id/btn"
         android:src="@drawable/camera" />
 
 
@@ -57,17 +57,17 @@
         android:layout_above="@id/btn">
 
 
-        <com.camerakit.CameraKitView
-            android:id="@+id/camera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:keepScreenOn="true"
-            app:camera_flash="auto"
-            app:camera_facing="back"
-            app:camera_focus="continuous"
-            app:camera_permissions="camera"
-            tools:ignore="MissingClass" />
+<!--        <com.camerakit.CameraKitView-->
+<!--            android:id="@+id/camera"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:keepScreenOn="true"-->
+<!--            app:camera_flash="auto"-->
+<!--            app:camera_facing="back"-->
+<!--            app:camera_focus="continuous"-->
+<!--            app:camera_permissions="camera"-->
+<!--&lt;!&ndash;            tools:ignore="MissingClass" />&ndash;&gt;-->
     </FrameLayout>
 
     <ProgressBar
@@ -80,10 +80,10 @@
         android:indeterminateBehavior="repeat"
         android:visibility="invisible" />
 
-    <com.example.machine_learning.GraphicOverlay
-        android:id="@+id/graphic_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingClass" />
+<!--    <com.example.machine_learning.GraphicOverlay-->
+<!--        android:id="@+id/graphic_overlay"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:ignore="MissingClass" />-->
 
 </RelativeLayout>

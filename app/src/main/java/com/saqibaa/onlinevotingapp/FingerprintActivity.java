@@ -90,8 +90,10 @@ public class FingerprintActivity extends AppCompatActivity {
         });
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Biometric Login For Online Vote")
-                .setSubtitle("Log in using your biometric credential")
+                .setTitle("Biometric Authentication for Vote")
+//                .setSubtitle("Log in using your biometric credential")
+                .setConfirmationRequired(false)
+                .setAllowedAuthenticators(BIOMETRIC_STRONG)
                 .setNegativeButtonText("Cancel")
                 .build();
 
