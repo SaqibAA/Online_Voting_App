@@ -29,7 +29,7 @@
             android:value="face" />
 
         <activity
-            android:name=".FaceActivity"
+            android:name=".VoteActivity"
             android:exported="false" />
 
         <activity

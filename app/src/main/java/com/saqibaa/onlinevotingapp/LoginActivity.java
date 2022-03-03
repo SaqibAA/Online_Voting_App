@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(email_flag){
             finish();
-            Intent intent=new Intent(LoginActivity.this,FingerprintActivity.class);
+            Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
             startActivity(intent);
         }else{
             Toast.makeText(LoginActivity.this, "Verify Your E-Mail", Toast.LENGTH_SHORT).show();

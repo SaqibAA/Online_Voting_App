@@ -16,4 +16,5 @@
     <string name="submit">Submit</string>
     <string name="remember_password_login">Remember Password? Login</string>
     <string name="enter_name">Enter Name</string>
+    <string name="vote">Vote</string>
 </resources>
