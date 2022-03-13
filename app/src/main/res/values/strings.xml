@@ -17,4 +17,7 @@
     <string name="remember_password_login">Remember Password? Login</string>
     <string name="enter_name">Enter Name</string>
     <string name="vote">Vote</string>
+    <string name="upload_aadhaar">Upload Aadhaar</string>
+    <string name="upload_voter_card">Upload Voter Card</string>
+    <string name="next">Next</string>
 </resources>

@@ -8,6 +8,7 @@
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/drawable/cursol.xml" value="0.25092592592592594" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/drawable/cursor.xml" value="0.2490740740740741" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/drawable/person.xml" value="0.2171875" />
+        <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_aadhaar.xml" value="0.27291666666666664" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_face.xml" value="0.1359375" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_fingerprint.xml" value="0.25885416666666666" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_home.xml" value="0.25" />
@@ -15,7 +16,8 @@
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_main.xml" value="0.13272543059777103" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_splash.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_vote.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_vote.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/activity_voter_card.xml" value="0.27291666666666664" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/layout/forget_password.xml" value="0.25885416666666666" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/menu/menu.xml" value="0.27291666666666664" />
         <entry key="..\:/AndroidProject/OnlineVotingApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24722222222222223" />

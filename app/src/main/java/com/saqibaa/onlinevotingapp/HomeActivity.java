@@ -19,24 +19,41 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.Executor;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private  static final int REQUEST_CODE = 102;
+    private static final int REQUEST_CODE = 102;
 
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
+    ImageView image1, image2;
+    DatabaseReference databaseReference1, databaseReference2;
+    private FirebaseAuth mAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        image1 = findViewById(R.id.i1);
+        image2 = findViewById(R.id.i2);
+
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference1 = FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).child("aadhaarImage");
+        databaseReference2 = FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).child("voterImage");
+
+//        getImageData();
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BIOMETRIC_STRONG | DEVICE_CREDENTIAL)) {
@@ -77,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onAuthenticationSucceeded(
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Intent intent=new Intent(HomeActivity.this,VoteActivity.class);
+                Intent intent = new Intent(HomeActivity.this, VoteActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
@@ -101,18 +118,39 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
 
         // Find the WebView by its unique ID
-        WebView w = (WebView) findViewById(R.id.web);
+//        WebView w = (WebView) findViewById(R.id.web);
 
         // loading http://www.google.com url in the the WebView.
-        w.loadUrl("https://eci.gov.in/elections/election/");
+//        w.loadUrl("https://eci.gov.in/elections/election/");
 
         // this will enable the javascript.
 //        w.getSettings().setJavaScriptEnabled(true);
 
         // WebViewClient allows you to handle
         // onPageFinished and override Url loading.
-        w.setWebViewClient(new WebViewClient());
+//        w.setWebViewClient(new WebViewClient());
     }
+
+//    private void getImageData() {
+//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot di:dataSnapshot.getChildren()){
+//                    ArticleList articleList=di.getValue(ArticleList.class);
+//                    articleLists.add(articleList);
+//                }
+//                ArticleAdapter adapter=new ArticleAdapter(articleLists,getApplicationContext());
+//                rv.setAdapter(adapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//}
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
