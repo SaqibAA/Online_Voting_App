@@ -17,14 +17,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.concurrent.Executor;
 
@@ -36,24 +41,23 @@ public class HomeActivity extends AppCompatActivity {
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
-    ImageView image1, image2;
-    DatabaseReference databaseReference1, databaseReference2;
-    private FirebaseAuth mAuth;
+//    ImageView image1, image2;
+    WebView web;
+//    DatabaseReference databaseReference1, databaseReference2;
+//    private FirebaseAuth mAuth;
 
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        image1 = findViewById(R.id.i1);
-        image2 = findViewById(R.id.i2);
+//        image1 = findViewById(R.id.i1);
+//        image2 = findViewById(R.id.i2);
 
-        mAuth = FirebaseAuth.getInstance();
-        databaseReference1 = FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).child("aadhaarImage");
-        databaseReference2 = FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).child("voterImage");
+        web = findViewById(R.id.web);
 
-//        getImageData();
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BIOMETRIC_STRONG | DEVICE_CREDENTIAL)) {
@@ -118,17 +122,22 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
 
         // Find the WebView by its unique ID
-//        WebView w = (WebView) findViewById(R.id.web);
+         web = findViewById(R.id.web);
+
+        WebSettings webSettings = web.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
         // loading http://www.google.com url in the the WebView.
 //        w.loadUrl("https://eci.gov.in/elections/election/");
+        web.loadUrl("https://ceo.maharashtra.gov.in/SearchInfo/ListPSs.aspx");
 
         // this will enable the javascript.
-//        w.getSettings().setJavaScriptEnabled(true);
+//        web.getSettings().setJavaScriptEnabled(true);
 
         // WebViewClient allows you to handle
         // onPageFinished and override Url loading.
-//        w.setWebViewClient(new WebViewClient());
+        web.setWebViewClient(new WebViewClient());
+
     }
 
 //    private void getImageData() {
