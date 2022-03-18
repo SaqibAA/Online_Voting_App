@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -37,6 +38,8 @@ public class AadhaarActivity extends AppCompatActivity {
     StorageReference storageReference;
     Button aadhaar, next;
     ImageButton AadhaarView;
+    EditText aadhaar_number;
+    String number;
     private FirebaseAuth mAuth;
     private final int REQ_AADHAAR = 1;
     ProgressDialog progressDialog;
@@ -56,6 +59,7 @@ public class AadhaarActivity extends AppCompatActivity {
         aadhaar = findViewById(R.id.btnAadhaar);
         next = findViewById(R.id.Next);
         AadhaarView = findViewById(R.id.aadhaarView);
+        aadhaar_number = findViewById(R.id.aadhaar_num);
 
 
         aadhaar.setOnClickListener(new View.OnClickListener() {
@@ -75,9 +79,18 @@ public class AadhaarActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog.setMessage("Please Wait");
-                progressDialog.show();
-                uploadImage();
+
+                number = aadhaar_number.getText().toString();
+
+                if (number.isEmpty()) {
+                    aadhaar_number.setError("Enter Aadhaar Number");
+                    aadhaar_number.requestFocus();
+                } else {
+                    databaseReference.child("User").child(mAuth.getUid()).child("aadhaar_num").setValue(number);
+                    progressDialog.setMessage("Please Wait");
+                    progressDialog.show();
+                    uploadImage();
+                }
             }
         });
     }

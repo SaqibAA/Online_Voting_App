@@ -20,4 +20,9 @@
     <string name="upload_aadhaar">Upload Aadhaar</string>
     <string name="upload_voter_card">Upload Voter Card</string>
     <string name="next">Next</string>
+    <string name="list_of_polling_station">List of Polling Station</string>
+    <string name="assembly_map">Assembly Map</string>
+    <string name="enter_aadhaar_number">Enter Aadhaar Number</string>
+    <string name="enter_voter_id_number">Enter Voter ID Number</string>
+    <string name="enter_name_as_per_aadhaar_or_voter_id">Enter Name As Per Aadhaar or Voter Id</string>
 </resources>

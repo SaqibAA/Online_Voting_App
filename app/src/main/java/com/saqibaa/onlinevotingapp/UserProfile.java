@@ -1,12 +1,12 @@
 package com.saqibaa.onlinevotingapp;
 
 public class UserProfile {
-    String userName, userEmail, userMobile, voterImage, aadhaarImage, date, time;
+    String userName, userEmail, userMobile, voterImage, aadhaarImage, date, time, aadhaar_num, voter_num, role;
 
     public UserProfile() {
     }
 
-    public UserProfile(String userName, String userEmail, String userMobile, String voterImage, String aadhaarImage, String date, String time) {
+    public UserProfile(String userName, String userEmail, String userMobile, String voterImage, String aadhaarImage, String date, String time, String aadhaar_num, String voter_num, String role) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userMobile = userMobile;
@@ -14,6 +14,9 @@ public class UserProfile {
         this.aadhaarImage = aadhaarImage;
         this.date = date;
         this.time = time;
+        this.aadhaar_num = aadhaar_num;
+        this.voter_num = voter_num;
+        this.role = role;
     }
 
     public String getUserName() {
@@ -70,6 +73,30 @@ public class UserProfile {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getAadhaar_num() {
+        return aadhaar_num;
+    }
+
+    public void setAadhaar_num(String aadhaar_num) {
+        this.aadhaar_num = aadhaar_num;
+    }
+
+    public String getVoter_num() {
+        return voter_num;
+    }
+
+    public void setVoter_num(String voter_num) {
+        this.voter_num = voter_num;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }

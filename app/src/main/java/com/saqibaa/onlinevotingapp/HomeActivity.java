@@ -42,7 +42,6 @@ public class HomeActivity extends AppCompatActivity {
     private BiometricPrompt.PromptInfo promptInfo;
 
 //    ImageView image1, image2;
-    WebView web;
 //    DatabaseReference databaseReference1, databaseReference2;
 //    private FirebaseAuth mAuth;
 
@@ -55,8 +54,6 @@ public class HomeActivity extends AppCompatActivity {
 
 //        image1 = findViewById(R.id.i1);
 //        image2 = findViewById(R.id.i2);
-
-        web = findViewById(R.id.web);
 
 
         BiometricManager biometricManager = BiometricManager.from(this);
@@ -121,23 +118,6 @@ public class HomeActivity extends AppCompatActivity {
                 .setNegativeButtonText("Cancel")
                 .build();
 
-        // Find the WebView by its unique ID
-         web = findViewById(R.id.web);
-
-        WebSettings webSettings = web.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        // loading http://www.google.com url in the the WebView.
-//        w.loadUrl("https://eci.gov.in/elections/election/");
-        web.loadUrl("https://ceo.maharashtra.gov.in/SearchInfo/ListPSs.aspx");
-
-        // this will enable the javascript.
-//        web.getSettings().setJavaScriptEnabled(true);
-
-        // WebViewClient allows you to handle
-        // onPageFinished and override Url loading.
-        web.setWebViewClient(new WebViewClient());
-
     }
 
 //    private void getImageData() {
@@ -185,6 +165,14 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.share:
                 shareApp();
                 return true;
+//            case R.id.map:
+//                Intent m = new Intent(HomeActivity.this, AssemblyMapActivity.class);
+//                startActivity(m);
+//                return  true;
+            case R.id.polling:
+                Intent p = new Intent(HomeActivity.this, PollingStationActivity.class);
+                startActivity(p);
+                return  true;
             default:
                 return super.onOptionsItemSelected(item);
         }

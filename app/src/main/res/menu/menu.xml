@@ -3,6 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/polling"
+        android:title="@string/list_of_polling_station"/>
+
+<!--    <item-->
+<!--        android:id="@+id/map"-->
+<!--        android:title="@string/assembly_map"/>-->
+
+<!--    <item-->
+<!--        android:id="@+id/share"-->
+<!--        android:title="@string/share_app"/>-->
+
+    <item
         android:id="@+id/share"
         android:title="@string/share_app"/>
 

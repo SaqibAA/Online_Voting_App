@@ -23,6 +23,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVotingApp">
+        <activity
+            android:name=".AssemblyMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PollingStationActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
@@ -31,7 +37,6 @@
         <activity
             android:name=".VoteActivity"
             android:exported="false" />
-
         <activity
             android:name=".AadhaarActivity"
             android:exported="false" />
