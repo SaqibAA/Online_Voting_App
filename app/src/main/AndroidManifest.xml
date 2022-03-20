@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<!--    <uses-permission android:name="android.permission.SEND_SMS"/>-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.SEND_SMS"/> -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -25,10 +24,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVotingApp">
         <activity
+            android:name=".UserProfileActivity"
+            android:label="Profile"
+            android:exported="false" />
+        <activity
+            android:name=".VoterInfoActivity"
+            android:label="Voter Info"
+            android:exported="false" />
+        <activity
             android:name=".AssemblyMapActivity"
             android:exported="false" />
         <activity
             android:name=".PollingStationActivity"
+            android:label="Polling Station List"
             android:exported="false" />
 
         <meta-data
@@ -37,21 +45,27 @@
 
         <activity
             android:name=".VoteActivity"
+            android:label="Vote"
             android:exported="false" />
         <activity
             android:name=".AadhaarActivity"
+            android:label="Registration"
             android:exported="false" />
         <activity
             android:name=".ForgetPassword"
+            android:label="Forget Password"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
+            android:label="Home"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
+            android:label="Registration"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:label="Login"
             android:exported="false" />
         <activity android:name=".VoterCardActivity" />
         <activity

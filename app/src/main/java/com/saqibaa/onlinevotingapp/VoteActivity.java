@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,9 +38,11 @@ public class VoteActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     String mob_num;
-    EditText num;
-    Button sent_otp;
+    EditText num, v_otp;
+    Button sent_otp, verify;
     String o,t,p1, p2, p3, p4, otp;
+    TextView v;
+    TextInputLayout l1,l2;
 
     String Capital_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     String symbols = "@#$%&*?";
@@ -70,7 +73,12 @@ public class VoteActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference().child("User").child(mAuth.getUid()).child("userName");
 
         num = findViewById(R.id.mobile_num);
+        v_otp = findViewById(R.id.edit_otp);
+        v = findViewById(R.id.view_opt);
         sent_otp = findViewById(R.id.sent_otp);
+        verify = findViewById(R.id.btnverity);
+        l1 = findViewById(R.id.num_text);
+        l2 = findViewById(R.id.verity_otp);
 
         Intent intent = getIntent();
         mob_num = intent.getStringExtra("num");
@@ -82,12 +90,18 @@ public class VoteActivity extends AppCompatActivity {
 
                 o = String.valueOf(alp.charAt(alp_method.nextInt(alp.length())));
                 t = String.valueOf(sys.charAt(sys_method.nextInt(sys.length())));
-                p1 = String.valueOf(_num.charAt(_num_method.nextInt(num.length())));
-                p2 = String.valueOf(_num.charAt(_num_method.nextInt(num.length())));
-                p3 = String.valueOf(_num.charAt(_num_method.nextInt(num.length())));
-                p4 = String.valueOf(_num.charAt(_num_method.nextInt(num.length())));
+                p1 = String.valueOf(_num.charAt(_num_method.nextInt(_num.length())));
+                p2 = String.valueOf(_num.charAt(_num_method.nextInt(_num.length())));
+                p3 = String.valueOf(_num.charAt(_num_method.nextInt(_num.length())));
+                p4 = String.valueOf(_num.charAt(_num_method.nextInt(_num.length())));
                 otp = o+t+p1+p2+p3+p4;
-//                num.setText(otp);
+//                otp = o+t+p1;
+                v.setText(otp);
+
+                l1.setVisibility(View.GONE);
+                sent_otp.setVisibility(View.GONE);
+                l2.setVisibility(View.VISIBLE);
+                verify.setVisibility(View.VISIBLE);
 
                 try {
                     // Construct data
@@ -132,6 +146,18 @@ public class VoteActivity extends AppCompatActivity {
 //
 //                Toast.makeText(getApplicationContext(), "OTP Sent successfully!",
 //                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+        verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String type_otp = v_otp.getText().toString();
+                if(type_otp.equals(otp)){
+                    Toast.makeText(getApplicationContext(),"OTP Verity Successful", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Wrong OTP", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

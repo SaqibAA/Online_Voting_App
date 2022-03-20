@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/profile"
+        android:title="@string/profile"/>
+
+    <item
         android:id="@+id/polling"
         android:title="@string/list_of_polling_station"/>
 

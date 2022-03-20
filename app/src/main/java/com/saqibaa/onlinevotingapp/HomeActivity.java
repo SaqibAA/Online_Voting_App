@@ -43,16 +43,12 @@ public class HomeActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    String number;
+    String number, name, email;
     private FirebaseAuth mAuth;
 
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
-
-//    ImageView image1, image2;
-//    DatabaseReference databaseReference1, databaseReference2;
-//    private FirebaseAuth mAuth;
 
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -61,14 +57,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-//        image1 = findViewById(R.id.i1);
-//        image2 = findViewById(R.id.i2);
-
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("User").child(mAuth.getUid()).child("userMobile");
+        databaseReference = firebaseDatabase.getReference().child("User").child(mAuth.getUid());
 
-        getnumber();
+        getData();
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BIOMETRIC_STRONG | DEVICE_CREDENTIAL)) {
@@ -132,15 +125,16 @@ public class HomeActivity extends AppCompatActivity {
                 .setAllowedAuthenticators(BIOMETRIC_STRONG)
                 .setNegativeButtonText("Cancel")
                 .build();
-
     }
 
-    private void getnumber() {
+    private void getData() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
-                number = value;
+                UserProfile userProfile = snapshot.getValue(UserProfile.class);
+                name = userProfile.getUserName();
+                number = userProfile.getUserMobile();
+                email = userProfile.getUserEmail();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -175,10 +169,13 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.share:
                 shareApp();
                 return true;
-//            case R.id.map:
-//                Intent m = new Intent(HomeActivity.this, AssemblyMapActivity.class);
-//                startActivity(m);
-//                return  true;
+            case R.id.profile:
+                Intent pro = new Intent(HomeActivity.this, UserProfileActivity.class);
+                pro.putExtra("num", "+91" + number);
+                pro.putExtra("email", email);
+                pro.putExtra("name", name);
+                startActivity(pro);
+                return  true;
             case R.id.polling:
                 Intent p = new Intent(HomeActivity.this, PollingStationActivity.class);
                 startActivity(p);

@@ -5,27 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".VoteActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/view_opt"
-        android:gravity="center"
-        android:textColor="@color/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".UserProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view_opt" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/InputField"
@@ -34,10 +25,69 @@
             android:layout_marginTop="3dp"
             android:layout_marginStart="6dp"
             android:layout_marginEnd="6dp"
-            android:hint="@string/enter_mobile_number"
+            android:hint="@string/name"
             android:textColorHint="@color/text"
             app:hintTextColor="@color/text"
-            android:id="@+id/num_text"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/text"
+            app:startIconDrawable="@drawable/person"
+            app:startIconTint="@color/text"
+            tools:ignore="RtlSymmetry">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/U_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="text"
+                android:textColor="@color/text"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="18sp"
+                tools:ignore="RtlSymmetry" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/InputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:hint="@string/email"
+            android:textColorHint="@color/text"
+            app:hintTextColor="@color/text"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/text"
+            app:startIconDrawable="@drawable/email"
+            app:startIconTint="@color/text"
+            tools:ignore="RtlSymmetry">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/U_Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/text"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="18sp"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/InputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:hint="@string/mobile_number"
+            android:textColorHint="@color/text"
+            app:hintTextColor="@color/text"
             app:endIconMode="clear_text"
             app:endIconTint="@color/text"
             app:startIconDrawable="@drawable/phone"
@@ -48,7 +98,7 @@
             tools:ignore="RtlSymmetry">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/mobile_num"
+                android:id="@+id/U_Mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -60,64 +110,6 @@
                 tools:ignore="RtlSymmetry" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/sent_otp"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/button_round"
-            android:text="@string/send_otp"
-            android:textColor="@color/background"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/InputField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:hint="Enter OTP"
-            android:id="@+id/verity_otp"
-            android:textColorHint="@color/text"
-            app:hintTextColor="@color/text"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/text"
-            app:startIconTint="@color/text"
-            app:prefixTextColor="@color/text"
-            app:counterMaxLength="10"
-            android:visibility="gone"
-            app:helperTextTextColor="@color/purple_200"
-            tools:ignore="RtlSymmetry">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_otp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textCursorDrawable="@drawable/cursor"
-                android:inputType="text"
-                android:textColor="@color/text"
-                android:textSize="18sp"
-                tools:ignore="RtlSymmetry" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btnverity"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/button_round"
-            android:text="Verity OTP"
-            android:visibility="gone"
-            android:textColor="@color/background"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
 
     </LinearLayout>
 
