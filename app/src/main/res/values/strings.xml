@@ -25,4 +25,5 @@
     <string name="enter_aadhaar_number">Enter Aadhaar Number</string>
     <string name="enter_voter_id_number">Enter Voter ID Number</string>
     <string name="enter_name_as_per_aadhaar_or_voter_id">Enter Name As Per Aadhaar or Voter Id</string>
+    <string name="send_otp">Send OTP</string>
 </resources>

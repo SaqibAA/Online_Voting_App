@@ -22,12 +22,16 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -36,6 +40,11 @@ import java.util.concurrent.Executor;
 public class HomeActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 102;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    String number;
+    private FirebaseAuth mAuth;
 
     private Executor executor;
     private BiometricPrompt biometricPrompt;
@@ -55,6 +64,11 @@ public class HomeActivity extends AppCompatActivity {
 //        image1 = findViewById(R.id.i1);
 //        image2 = findViewById(R.id.i2);
 
+        mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("User").child(mAuth.getUid()).child("userMobile");
+
+        getnumber();
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BIOMETRIC_STRONG | DEVICE_CREDENTIAL)) {
@@ -96,6 +110,7 @@ public class HomeActivity extends AppCompatActivity {
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Intent intent = new Intent(HomeActivity.this, VoteActivity.class);
+                intent.putExtra("num", "+91" + number);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
@@ -120,24 +135,19 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-//    private void getImageData() {
-//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot di:dataSnapshot.getChildren()){
-//                    ArticleList articleList=di.getValue(ArticleList.class);
-//                    articleLists.add(articleList);
-//                }
-//                ArticleAdapter adapter=new ArticleAdapter(articleLists,getApplicationContext());
-//                rv.setAdapter(adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//}
+    private void getnumber() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value = snapshot.getValue(String.class);
+                number = value;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(VoteActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
 
