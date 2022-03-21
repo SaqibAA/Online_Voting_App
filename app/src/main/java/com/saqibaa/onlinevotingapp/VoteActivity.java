@@ -105,13 +105,13 @@ public class VoteActivity extends AppCompatActivity {
 
                 try {
                     // Construct data
-                    String apiKey = "apikey=" + "NmIzOTM1NjM1MzU4NjI0ZTYxNzc2ZTQ3NjI3YTU4NTA=";
-                    String message = "&message=" + "Your OTP is " + otp;
-                    String sender = "&sender=" + "Votes";
+                    String apiKey = "apikey=" + "NDU3NTUwMzg2NDMyNjU2MTU1NjkzNTc5NDM2YjQ3NjI=";
+                    String message = "&message=" + "Your OTP is" + otp;
+                    String sender = "&sender=" + "Elections";
                     String numbers = "&numbers=" + mob_num;
 
                     // Send data
-                    HttpURLConnection conn = (HttpURLConnection) new URL("https://api.textlocal.in/send/?").openConnection();
+                    HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
                     String data = apiKey + numbers + message + sender;
                     conn.setDoOutput(true);
                     conn.setRequestMethod("POST");
@@ -124,6 +124,7 @@ public class VoteActivity extends AppCompatActivity {
                         stringBuffer.append(line);
                     }
                     rd.close();
+
                     Toast.makeText(getApplicationContext(), "OTP Sent successfully!",
                             Toast.LENGTH_LONG).show();
 //                    return stringBuffer.toString();
@@ -133,6 +134,7 @@ public class VoteActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "OTP Not Sent, Try after some time!",
                             Toast.LENGTH_LONG).show();
                 }
+
 
 
 //                sendSMSMessage();

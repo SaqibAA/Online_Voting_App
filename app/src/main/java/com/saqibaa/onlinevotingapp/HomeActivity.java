@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    String number, name, email;
+    String number, name, email, voter, aadhaar;
     private FirebaseAuth mAuth;
 
     private Executor executor;
@@ -103,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Intent intent = new Intent(HomeActivity.this, VoteActivity.class);
-                intent.putExtra("num", "+91" + number);
+                intent.putExtra("num", number);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
@@ -135,6 +135,8 @@ public class HomeActivity extends AppCompatActivity {
                 name = userProfile.getUserName();
                 number = userProfile.getUserMobile();
                 email = userProfile.getUserEmail();
+                voter = userProfile.getVoter_num();
+                aadhaar = userProfile.getAadhaar_num();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -171,9 +173,11 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             case R.id.profile:
                 Intent pro = new Intent(HomeActivity.this, UserProfileActivity.class);
-                pro.putExtra("num", "+91" + number);
+                pro.putExtra("num", number);
                 pro.putExtra("email", email);
                 pro.putExtra("name", name);
+                pro.putExtra("voter", voter);
+                pro.putExtra("aadhaar", aadhaar);
                 startActivity(pro);
                 return  true;
             case R.id.polling:

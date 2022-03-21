@@ -13,10 +13,18 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/Tea_Image"
+            android:src="@drawable/avater"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/InputField"
@@ -99,6 +107,72 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/U_Mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:textCursorDrawable="@drawable/cursor"
+                android:inputType="phone"
+                android:textColor="@color/text"
+                android:textSize="18sp"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/InputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:hint="@string/aadhaar_number"
+            android:textColorHint="@color/text"
+            app:hintTextColor="@color/text"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/text"
+            app:startIconTint="@color/text"
+            app:startIconDrawable="@drawable/document"
+            app:prefixTextColor="@color/text"
+            app:counterMaxLength="10"
+            app:helperTextTextColor="@color/purple_200"
+            tools:ignore="RtlSymmetry">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/U_Aadhaar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:textCursorDrawable="@drawable/cursor"
+                android:inputType="phone"
+                android:textColor="@color/text"
+                android:textSize="18sp"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/InputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:hint="@string/voter_id_number"
+            android:textColorHint="@color/text"
+            app:hintTextColor="@color/text"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/text"
+            app:startIconDrawable="@drawable/document"
+            app:startIconTint="@color/text"
+            app:prefixTextColor="@color/text"
+            app:counterMaxLength="10"
+            app:helperTextTextColor="@color/purple_200"
+            tools:ignore="RtlSymmetry">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/U_Voter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

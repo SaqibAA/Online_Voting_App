@@ -166,7 +166,7 @@ public class RegisterActivity extends AppCompatActivity {
             SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
             String time = currentTime.format(Time.getTime());
 
-            UserProfile userProfile = new UserProfile(name, email, mobile, voterUrl, aadhaarUrl, date, time, "", "", "user");
+            UserProfile userProfile = new UserProfile(name, email, "+91" +mobile, voterUrl, aadhaarUrl, date, time, "", "", "user");
             myRef.child("User").child(mAuth.getUid()).setValue(userProfile);
 
             finish();
